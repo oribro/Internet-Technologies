@@ -1,0 +1,79 @@
+
+body {
+    font-family: arial;
+    font-size: 14px;
+    color: black;
+    background: #ffc
+url(../awesome-smiley-face-meme-t-shirt-men-s-t-shirt.jpg)
+      no-repeat 90% 70%;
+    background-size: 15% 30%;
+    margin: 20px;
+    padding: 0;
+  border-radius: 6px 12px 18px 24px;
+}
+
+
+a {
+    color: blue;
+    font-size: 25px;
+}
+
+h1 {
+    color: yellow;
+    background-color: #900;
+    font-size: 2.5em;
+    margin: 0;
+    margin-bottom: 7px;
+    padding: 4px;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.5em;
+    border-bottom-style: solid;
+    border-bottom-width: 0.5em;
+    border-bottom-color: #00f;
+  
+}
+
+h2 {
+    color: white;
+    background-color: #090;
+    font-size: 1.8em;
+    margin: 0;
+    padding: 2px;
+    text-align: center;
+    border-style: dotted;
+    border-width: 5px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-color: cyan;
+  background: radial-gradient(yellow, green,red,blue,yellow); 
+}
+
+section{
+  text-align: center;
+}
+
+img {
+    border-style: solid;
+    border-width: 4px;
+    border-color: #abc;
+    text-align: center;
+    box-shadow: 5px 5px 3px 3px #999
+}
+
+
+li {
+    color: #900;
+    font-style: italic;
+}
+nav{
+  text-align: center;
+}
+
+details{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+}
+
