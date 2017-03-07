@@ -1,0 +1,15 @@
+What was hard:
+
+Understanding how AJAX works and how all things fall into place 
+(javascript combined with html combined with client-server communication)
+
+What was easy: 
+
+Recreating features from ex2 such as the buttons and one screen app.
+
+Comments about the course:
+
+- Should be organized better. i.e we were waiting for ex3 to come out for very 
+long time and we could use that time to prepare for it and it's complexity.
+
+- It allowed us to learn useful things about the internet and now we are smarter :)

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ex4</title>
+
+
+</head>
+
+<div id="buttons">
+<body onload="getStyle()">
+  <button type="button" id="zero" onclick=update(false)>0</button>
+<button type="button" id="reGamble" onclick=reset(false)>ReGamble</button>
+<button type="button" id="one" onclick=update(true)>1</button>
+<button type="button" id="newGame" onclick=reset(true)>New Game</button>
+</div>
+
+<div id="text">
+
+</div>
+
+    <script>
+	function getStyle(){
+		var button1 = document.getElementById("zero");
+		var button2 = document.getElementById("reGamble");
+		var button3 = document.getElementById("one");
+		var button4 = document.getElementById("newGame");
+		var text = document.getElementById("text");
+		styleButtons(button1);
+		styleButtons(button2);
+		styleButtons(button3);
+		styleButtons(button4);
+		text.style.color = "#93291b";
+		text.style.fontFamily ='Lato, sans-serif';
+		text.style.fontSize= "40px";
+		text.style.fontWeight ='300';
+		text.style.lineHeight ='58px';
+		text.style.margin=' 0 0 58px';
+	}
+	function styleButtons(button){
+		button.style.backgroundColor = "#4CAF50";
+		button.style.padding = " 30px 50px";
+		button.style.border = "none";
+		button.style.color = "white";
+		button.style.fontSize = "30px";
+		button.style.margin = "4px 2px";
+    	button.style.cursor = "pointer";
+	}
+
+	function update(binNum){
+	  var zero = document.getElementById("zero");
+	  var one = document.getElementById("one");
+	  var req = new XMLHttpRequest();
+	  zero.style.visibility = "hidden";
+	  one.style.visibility = "hidden";
+	  if (binNum === false)
+ 	  	req.open("POST", "/gamble/0", true);
+ 	  else
+ 	  	req.open("POST", "/gamble/1", true);
+	  req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	  req.onreadystatechange = function() {//Call a function when the state changes.
+	      if(req.readyState == XMLHttpRequest.DONE && req.status == 200) {
+	      		var gambling = JSON.parse(req.responseText);
+	      		if (binNum === false){
+	      			if (gambling["ones"] > gambling["zeros"])
+	         			document.getElementById("text").innerHTML = "Results: " + req.responseText + "<br>You Won!";
+	         		else if (gambling["ones"] < gambling["zeros"])
+	         			document.getElementById("text").innerHTML = "Results: " + req.responseText + "<br>You Lost!";
+	         		else
+	         			document.getElementById("text").innerHTML = "Results: " + req.responseText + "<br>Tie!";
+	         	}
+	         	else{
+	         		if (gambling["ones"] < gambling["zeros"])
+	         			document.getElementById("text").innerHTML = "Results: " + req.responseText + "<br>You Won!";
+	         		else if (gambling["ones"] > gambling["zeros"])
+	         			document.getElementById("text").innerHTML = "Results: " + req.responseText + "<br>You Lost!";
+	         		else
+	         			document.getElementById("text").innerHTML = "Results: " + req.responseText + "<br>Tie!";
+	         	}
+	      }
+	 }
+	  req.send();
+	}
+
+	function reset(scoresToo){
+	  var zero = document.getElementById("zero");
+	  var one = document.getElementById("one");
+	  var newGame = document.getElementById("newGame");
+	  var req = new XMLHttpRequest();
+	  if (scoresToo === true){
+		   zero.style.visibility = "hidden";
+			one.style.visibility = "hidden";
+	  	   req.open("DELETE", "/gamble/reset", true);
+	  	   req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	  	   req.onreadystatechange = function() {//Call a function when the state changes.
+		   	  	      if(req.readyState == XMLHttpRequest.DONE && req.status == 200) {
+		   	  	         	document.getElementById("text").innerHTML = "Results: " + req.responseText;
+		   	  	      }
+		   	  	 }
+	  	   req.send();
+	  }
+	  else{
+		 zero.style.visibility = "visible";
+		one.style.visibility = "visible";
+		location.reload();
+	  }
+	  
+}
+    </script>
+
+</body>
+</html>
